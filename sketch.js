@@ -106,7 +106,7 @@ function draw() {
    
     
     // pular quando a tecla espaço é acionada
-    if(touches.length > 0 && trex.y > height- 60 {
+    if(touches.length > 0 && trex.y > height- 60) {
       trex.velocityY = -10;
       somSalto.play();
       touches = [];
