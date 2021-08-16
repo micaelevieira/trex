@@ -83,6 +83,7 @@ function draw() {
   
   //definir cor de fundo
   background(240);
+  console.log(trex.y)
   
   //mostra a pontuação na tela
    text("Pontuacao: "+ pontuacao, width/2 -50,height-500);
@@ -106,7 +107,7 @@ function draw() {
    
     
     // pular quando a tecla espaço é acionada
-    if(touches.length > 0 && trex.y > height- 60) {
+    if((touches.length > 0 && trex.y > height- 60) || (keyDown("space")) && trex.y > height -60) {
       trex.velocityY = -10;
       somSalto.play();
       touches = [];
@@ -145,6 +146,11 @@ function draw() {
     fimdejogo.visible = true;
     reiniciar.visible = true;
     
+    if(mousePressedOver(reiniciar)){
+    reset();
+     
+     }
+    
     if(touches.length > 0){
     
     reset();
@@ -157,6 +163,16 @@ function draw() {
   
   drawSprites();
   
+}
+
+function reset(){
+  estadoJogo = JOGAR;
+  fimDeJogo.visible = false;
+  reiniciar.visible = false;
+  pontuacao = 0;
+  
+  grupodeobstaculos.destroyEach();
+  grupodenuvens.destroyEach();
 }
 
 function GerarNuvens(){
@@ -220,5 +236,6 @@ function reset(){
   trex.changeAnimation("running", trex_correndo);
   pontuacao =  0;
 }
+
 
 
